@@ -1,0 +1,19 @@
+{
+  "name": "word-of-the-day",
+  "version": "1.0.0",
+  "description": "Get Dictionary.com's word of the day",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Sam Keshmiri",
+  "license": "ISC",
+  "keywords": [
+    "wotd",
+    "word",
+    "dictionary"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.12.2",
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.2"
+  }
+}
