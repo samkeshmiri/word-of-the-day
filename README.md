@@ -1,10 +1,18 @@
 # word-of-the-day 
 
-This script fetches the Word of The Day from Dictionary.com.
+I wrote this script to get Dictionary.com's Word of The Day on the first line of my terminal when I open a new tab or window.
 
-It creates a new file wherever the script is called to store the word of the day in JSON format. When calling it again it will fetch the word from the file instead of scraping it from the website.
+The script creates a new file wherever it is called and will store the word of the day in JSON format. When calling it again it will fetch the word from the file instead of scraping it from the website.
 
-I wrote it to have the day's quote on the first line of my terminal when I open a new tab or window.
+```
+[
+  {
+    "date": "2024-04-01",
+    "word": "naiveté",
+    "definition": "the quality or state of having or showing a lack of experience or judgment; natural or artless simplicity."
+  }
+]
+```
 
 Once you have downloaded the script add a line to your bash or in my case `.zshrc` file to execute the script.
 
