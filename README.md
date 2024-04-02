@@ -2,7 +2,9 @@
 
 I wrote this script to get Dictionary.com's Word of The Day on the first line of my terminal when I open a new tab or window.
 
-The script creates a new file wherever it is called and will store the word of the day in JSON format. When calling it again it will fetch the word from the file instead of scraping it from the website.
+<img width="1313" alt="image" src="https://github.com/samkeshmiri/word-of-the-day/assets/47006111/a2cede25-16ca-44fa-bf50-bd87d14df286">
+
+The script creates a new file wherever it is called and will store the word of the day in JSON format in a file in the same location for caching.
 
 ```
 [
@@ -18,6 +20,3 @@ Once you have downloaded the script add a line to your bash or in my case `.zshr
 
 I used ts-node to execute it like so;
 `ts-node "/path/to/WordOfTheDay.ts"`
-
-
-<img width="1313" alt="image" src="https://github.com/samkeshmiri/word-of-the-day/assets/47006111/a2cede25-16ca-44fa-bf50-bd87d14df286">
