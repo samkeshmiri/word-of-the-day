@@ -1,8 +1,9 @@
 //www.dictionary.com/e/word-of-the-day/
+
 import { load } from "cheerio";
 import fs from "fs";
 
-const filePath = "./WordOfTheDay.json";
+const filePath = `${require("os").homedir()}/WordOfTheDay.json`;
 
 type WordOfTheDay = {
   date: string;
@@ -25,13 +26,10 @@ async function getWordOfTheDay(): Promise<WordOfTheDay> {
   };
 }
 
-function createOrUpdateWordOfTheDayFile(wordOfTheDay: WordOfTheDay): void {
-  let entries: WordOfTheDay[] = [];
-  try {
-    const data = fs.readFileSync(filePath, { encoding: "utf8" });
-    entries = JSON.parse(data);
-  } catch (err) {}
-
+function createOrUpdateWordOfTheDayFile(
+  wordOfTheDay: WordOfTheDay,
+  entries: WordOfTheDay[]
+): void {
   const today = new Date().toISOString().split("T")[0];
   if (entries.some((entry) => entry.date === today)) {
     console.log("Today's word already exists. Skipping...");
@@ -48,9 +46,10 @@ function createOrUpdateWordOfTheDayFile(wordOfTheDay: WordOfTheDay): void {
 async function wordOfTheDay() {
   const today = new Date().toISOString().split("T")[0];
 
+  let entries: WordOfTheDay[] = [];
   try {
     const data = fs.readFileSync(filePath, { encoding: "utf8" });
-    const entries: WordOfTheDay[] = JSON.parse(data);
+    entries = JSON.parse(data);
     const latestEntry = entries[entries.length - 1];
     if (latestEntry.date === today) {
       console.log(
@@ -58,10 +57,12 @@ async function wordOfTheDay() {
       );
       return;
     }
-  } catch (err) {}
+  } catch {
+    // swallow error as we create the file if missing
+  }
 
   const wordOfTheDay = await getWordOfTheDay();
-  createOrUpdateWordOfTheDayFile(wordOfTheDay);
+  createOrUpdateWordOfTheDayFile(wordOfTheDay, entries);
 }
 
 wordOfTheDay();
